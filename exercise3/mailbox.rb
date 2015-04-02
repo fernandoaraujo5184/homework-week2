@@ -34,7 +34,39 @@ class Mailbox
 end
 
 class MailboxTextFormatter
-  # fill in this class body
+  
+  def initializate(mailbox)
+    @mailbox = mailbox
+    
+    def mailbox
+      @mailbox
+    end
+  end
+  
+    
+  def maxSizeSubject(mailbox)
+    maxSizeSubject = 0
+    mailbox.emails.each do |email|
+    	if email.subject.size >= maxSizeSubject then maxSizeSubject = email.subject.size
+    return maxSizeSubject
+    end
+  end
+  
+  def maxSizeDate(mailbox)
+    maxSizeDate = 0
+    mailbox.emails.each do |email|
+    	if email.date.size >= maxSizeDate then maxSizeDate = email.date.size
+    return maxSizeDate
+    end
+  end
+  
+  def maxSizeFrom(mailbox)
+    maxSizeFrom = 0
+    mailbox.emails.each do |email|
+    	if email.from.size >= maxSizeFrom then maxSizeFrom = email.from.size
+      return maxSizeFrom
+  	end
+  end
 end
 
 emails = [
