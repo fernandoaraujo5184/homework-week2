@@ -74,7 +74,7 @@ class MailboxTextFormatter
     puts "| Date#{' ' * (maxSizeDate - 3)}| From#{' ' * (maxSizeFrom - 3)}| Subject#{' ' * (maxSizeSubject - 6)}|"
     puts "+#{'-' * (maxSizeDate + 2)}+#{'-' * (maxSizeFrom + 2)}+#{'-' * (maxSizeSubject + 2)}+"
     mailbox.emails.each.do |email|
-      def initializate(dateSize,fromSize,subjectSize)
+      def mailbox(dateSize,fromSize,subjectSize)
         @dateSize = (maxSizeDate - email.date.size)
         @fromSize = (maxSizeFrom - email.from.size)
         @subjectSize = (maxSizeSubject - email.subject.size)
