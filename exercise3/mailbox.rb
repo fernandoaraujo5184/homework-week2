@@ -69,7 +69,6 @@ class MailboxTextFormatter
   end
   
   def format
-    
     puts "Mailbox: #{mailbox.name}"
     puts "+#{'-' * (maxSizeDate + 2)}+#{'-' * (maxSizeFrom + 2)}+#{'-' * (maxSizeSubject + 2)}+"
     puts "| Date#{' ' * (maxSizeDate - 3)}| From#{' ' * (maxSizeFrom - 3)}| Subject#{' ' * (maxSizeSubject - 6)}|"
