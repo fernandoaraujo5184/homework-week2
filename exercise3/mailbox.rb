@@ -47,7 +47,7 @@ class MailboxTextFormatter
   def maxSizeSubject(mailbox)
     maxSizeSubject = 0
     mailbox.emails.each do |email|
-    	if email.subject.size >= maxSizeSubject then maxSizeSubject = email.subject.size
+    	if email.subject.size > maxSizeSubject then maxSizeSubject = email.subject.size
     return maxSizeSubject
     end
   end
@@ -55,7 +55,7 @@ class MailboxTextFormatter
   def maxSizeDate(mailbox)
     maxSizeDate = 0
     mailbox.emails.each do |email|
-    	if email.date.size >= maxSizeDate then maxSizeDate = email.date.size
+    	if email.date.size > maxSizeDate then maxSizeDate = email.date.size
     return maxSizeDate
     end
   end
@@ -63,9 +63,26 @@ class MailboxTextFormatter
   def maxSizeFrom(mailbox)
     maxSizeFrom = 0
     mailbox.emails.each do |email|
-    	if email.from.size >= maxSizeFrom then maxSizeFrom = email.from.size
+    	if email.from.size > maxSizeFrom then maxSizeFrom = email.from.size
       return maxSizeFrom
   	end
+  end
+  
+  def format
+    
+    puts "Mailbox: #{mailbox.name}"
+    puts "+#{'-' * (maxSizeDate + 2)}+#{'-' * (maxSizeFrom + 2)}+#{'-' * (maxSizeSubject + 2)}+"
+    puts "| Date#{' ' * (maxSizeDate - 3)}| From#{' ' * (maxSizeFrom - 3)}| Subject#{' ' * (maxSizeSubject - 6)}|"
+    puts "+#{'-' * (maxSizeDate + 2)}+#{'-' * (maxSizeFrom + 2)}+#{'-' * (maxSizeSubject + 2)}+"
+    mailbox.emails.each.do |email|
+      def initializate(dateSize,fromSize,subjectSize)
+        @dateSize = (maxSizeDate - email.date.size)
+        @fromSize = (maxSizeFrom - email.from.size)
+        @subjectSize = (maxSizeSubject - email.subject.size)
+      end
+      puts "| #{email.date}#{' ' * (dateSize + 1)} | #{email.from}#{' ' * (fromSize + 1)} | #{email.subject}#{' ' * (subjectSize + 1)}+"
+      end
+    puts "+#{'-' * (maxSizeDate + 2)}+#{'-' * (maxSizeFrom + 2)}+#{'-' * (maxSizeSubject + 2)}+"
   end
 end
 
